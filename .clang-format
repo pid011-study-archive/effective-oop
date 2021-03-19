@@ -1,0 +1,55 @@
+# Gist: https://gist.github.com/pid011/b5f3d0151ce316bd5478d1de768ae2db
+# Reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+# In Visual Studio: Format document - Ctrl + K, Ctrl + D, Format selection - Ctrl + K, Ctrl + F
+
+Language: Cpp
+
+AccessModifierOffset: -4
+AllowShortCaseLabelsOnASingleLine: true
+# AllowShortEnumsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: Yes
+BreakBeforeBraces: Allman
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: true
+ColumnLimit: 0
+CompactNamespaces: false
+Cpp11BracedListStyle: false
+FixNamespaceComments: true
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<.*'
+    Priority: 1
+  - Regex: '^<.*\.h>'
+    Priority: 2
+  - Regex: '.*'
+    Priority: 3
+IndentCaseLabels: false
+IndentWidth: 4
+IndentWrappedFunctionNames: true
+NamespaceIndentation: All
+PointerAlignment: Left
+SortIncludes: false
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: false
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: true
+SpaceInEmptyParentheses: false
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+Standard: Auto
+TabWidth: 4
+UseTab: Never
