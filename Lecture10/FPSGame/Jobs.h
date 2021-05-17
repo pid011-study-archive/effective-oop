@@ -23,7 +23,7 @@ protected:
 class Engineer : public Job
 {
 public:
-    Engineer(IWeapon&& defaultWeapon) : Job("Engineer", defaultWeapon) { }
+    Engineer(const IWeapon& defaultWeapon) : Job("Engineer", defaultWeapon) { }
 
     virtual void move() const override { }
     virtual void attack() const override
@@ -35,7 +35,7 @@ public:
 class Assault : public Job
 {
 public:
-    Assault(IWeapon&& defaultWeapon) : Job("Assault", defaultWeapon) { }
+    Assault(const IWeapon& defaultWeapon) : Job("Assault", defaultWeapon) { }
 
     virtual void move() const override { }
     virtual void attack() const override
@@ -47,7 +47,7 @@ public:
 class Medic : public Job
 {
 public:
-    Medic(IWeapon&& defaultWeapon) : Job("Medic", defaultWeapon) { }
+    Medic(const IWeapon& defaultWeapon) : Job("Medic", defaultWeapon) { }
 
     virtual void move() const override { }
     virtual void attack() const override
