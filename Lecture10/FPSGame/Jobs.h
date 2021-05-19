@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include <iostream>
 #include <string>
 #include <utility>
 #include <memory>
@@ -10,7 +9,7 @@ class Job : public IPlayer
 {
 public:
     explicit Job(std::string&& jobName, std::unique_ptr<IWeapon>&& defaultWeapon)
-        : _jobName(std::move(jobName)), _weapon(std::move(defaultWeapon)) { }
+        : _weapon(std::move(defaultWeapon)), _jobName(std::move(jobName)) { }
 
     ~Job() override = default;
     void move() const override = 0;
@@ -24,7 +23,7 @@ protected:
     const std::string _jobName;
 };
 
-class Engineer : public Job
+class Engineer final : public Job
 {
 public:
     explicit Engineer(std::unique_ptr<IWeapon>&& defaultWeapon) : Job("Engineer", std::move(defaultWeapon)) { }
@@ -36,7 +35,7 @@ public:
     }
 };
 
-class Assault : public Job
+class Assault final : public Job
 {
 public:
     explicit Assault(std::unique_ptr<IWeapon>&& defaultWeapon) : Job("Assault", std::move(defaultWeapon)) { }
@@ -48,7 +47,7 @@ public:
     }
 };
 
-class Medic : public Job
+class Medic final : public Job
 {
 public:
     explicit Medic(std::unique_ptr<IWeapon>&& defaultWeapon) : Job("Medic", std::move(defaultWeapon)) { }

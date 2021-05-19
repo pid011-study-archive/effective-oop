@@ -5,9 +5,9 @@
 
 int main()
 {
-    Engineer engineer(std::make_unique<GunWeapon>());
-    Assault assault(std::make_unique<LaserWeapon>());
-    Medic medic(std::make_unique<RocketWeapon>());
+    const Engineer engineer(std::make_unique<GunWeapon>());
+    const Assault assault(std::make_unique<LaserWeapon>());
+    const Medic medic(std::make_unique<RocketWeapon>());
 
     engineer.Weapon()->printWeaponName();
     std::cout << medic.JobName() << std::endl;
