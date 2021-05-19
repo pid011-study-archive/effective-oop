@@ -1,57 +1,61 @@
 ﻿#pragma once
 #include <iostream>
 #include <string>
+#include <utility>
+#include <memory>
 #include "IPlayer.h"
 #include "IWeapon.h"
 
 class Job : public IPlayer
 {
 public:
-    Job(std::string jobName, const IWeapon& defaultWeapon) : _jobName(jobName), _weapon(defaultWeapon) { }
-    virtual ~Job() override = default;
-    virtual void move() const = 0;
-    virtual void attack() const = 0;
+    explicit Job(std::string&& jobName, std::unique_ptr<IWeapon>&& defaultWeapon)
+        : _jobName(std::move(jobName)), _weapon(std::move(defaultWeapon)) { }
 
-    const std::string& JobName() const { return _jobName; }
-    const IWeapon& Weapon() const { return _weapon; }
+    ~Job() override = default;
+    void move() const override = 0;
+    void attack() const override = 0;
+
+    [[nodiscard]] const std::string& JobName() const { return _jobName; }
+    [[nodiscard]] const IWeapon* Weapon() const { return _weapon.get(); }
 
 protected:
-    const IWeapon& _weapon;
+    std::unique_ptr<IWeapon> _weapon;
     const std::string _jobName;
 };
 
 class Engineer : public Job
 {
 public:
-    Engineer(const IWeapon& defaultWeapon) : Job("Engineer", defaultWeapon) { }
+    explicit Engineer(std::unique_ptr<IWeapon>&& defaultWeapon) : Job("Engineer", std::move(defaultWeapon)) { }
 
-    virtual void move() const override { }
-    virtual void attack() const override
+    void move() const override { }
+    void attack() const override
     {
-        _weapon.fire();
+        _weapon->fire();
     }
 };
 
 class Assault : public Job
 {
 public:
-    Assault(const IWeapon& defaultWeapon) : Job("Assault", defaultWeapon) { }
+    explicit Assault(std::unique_ptr<IWeapon>&& defaultWeapon) : Job("Assault", std::move(defaultWeapon)) { }
 
-    virtual void move() const override { }
-    virtual void attack() const override
+    void move() const override { }
+    void attack() const override
     {
-        _weapon.fire();
+        _weapon->fire();
     }
 };
 
 class Medic : public Job
 {
 public:
-    Medic(const IWeapon& defaultWeapon) : Job("Medic", defaultWeapon) { }
+    explicit Medic(std::unique_ptr<IWeapon>&& defaultWeapon) : Job("Medic", std::move(defaultWeapon)) { }
 
-    virtual void move() const override { }
-    virtual void attack() const override
+    void move() const override { }
+    void attack() const override
     {
-        _weapon.fire();
+        _weapon->fire();
     }
 };
