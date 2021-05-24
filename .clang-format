@@ -19,13 +19,14 @@ CompactNamespaces: false
 Cpp11BracedListStyle: false
 FixNamespaceComments: true
 IncludeBlocks: Regroup
-IncludeCategories:
+IncludeCategories: 
   - Regex: '^<.*'
     Priority: 1
-  - Regex: '^<.*\.h>'
+  - Regex: '^".*'
     Priority: 2
   - Regex: '.*'
     Priority: 3
+IncludeIsMainRegex: '([-_](test|unittest))?$'
 IndentCaseLabels: false
 IndentWidth: 4
 IndentWrappedFunctionNames: true
